@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1,
+    "description": "Basic function + template literal",
+    "before": "function greet(name) {\n  const message = `Hello, ${name}!`;\n  console.log(message);\n}\n\ngreet(\"Alice\");\n",
+    "after": "function Function1(Alpha) {\n  const Bravo = `Lorem Ipsum${Alpha}Lorem Ipsum`;\n  console.log(Bravo);\n}\n\nFunction1(\"Lorem Ipsum\");\n"
+  },
+  {
+    "id": 2,
+    "description": "Arrow function + default parameter",
+    "before": "const formatUser = (user = \"guest\") => {\n  return `${user.toUpperCase()} logged in`;\n};\nconsole.log(formatUser());\n",
+    "after": "const Alpha = (Bravo = \"Lorem Ipsum\") => {\n  return `${Bravo.toUpperCase()}Lorem Ipsum`;\n};\nconsole.log(Alpha());\n"
+  },
+  {
+    "id": 3,
+    "description": "Destructuring + renaming",
+    "before": "function printProfile({ name: n, age }) {\n  const label = `${n} is ${age}`;\n  console.log(label);\n}\nprintProfile({ name: \"Sam\", age: 33 });\n",
+    "after": "function Function1({ name: Alpha, age: Bravo }) {\n  const Charlie = `${Alpha}Lorem Ipsum${Bravo}`;\n  console.log(Charlie);\n}\nFunction1({ name: \"Lorem Ipsum\", age: 33 });\n"
+  },
+  {
+    "id": 4,
+    "description": "Nested scopes + shadowing",
+    "before": "function outer(x) {\n  const y = x + 1;\n  function inner(x) {\n    const y = x * 2;\n    return y;\n  }\n  return inner(y);\n}\nconsole.log(outer(10));\n",
+    "after": "function Function1(Alpha) {\n  const Bravo = Alpha + 1;\n  function Function2(Charlie) {\n    const Delta = Charlie * 2;\n    return Delta;\n  }\n  return Function2(Bravo);\n}\nconsole.log(Function1(10));\n"
+  },
+  {
+    "id": 5,
+    "description": "Object methods + computed keys",
+    "before": "const api = {\n  baseUrl: \"https://example.com\",\n  get(path) {\n    return `${this.baseUrl}/${path}`;\n  },\n  [\"x-custom-header\"]: \"token-123\"\n};\n\nconsole.log(api.get(\"users\"));\n",
+    "after": "const Alpha = {\n  baseUrl: \"Lorem Ipsum\",\n  get(Bravo) {\n    return `${this.baseUrl}Lorem Ipsum${Bravo}`;\n  },\n  [\"Lorem Ipsum\"]: \"Lorem Ipsum\"\n};\n\nconsole.log(Alpha.get(\"Lorem Ipsum\"));\n"
+  },
+  {
+    "id": 6,
+    "description": "Class with constructor + method",
+    "before": "class User {\n  constructor(name) {\n    this.name = name;\n  }\n  greet() {\n    return `Hi, ${this.name}`;\n  }\n}\nconst u = new User(\"Mina\");\nconsole.log(u.greet());\n",
+    "after": "class Class1 {\n  constructor(Alpha) {\n    this.Bravo = Alpha;\n  }\n  Function1() {\n    return `Lorem Ipsum${this.Bravo}`;\n  }\n}\nconst Charlie = new Class1(\"Lorem Ipsum\");\nconsole.log(Charlie.Function1());\n"
+  },
+  {
+    "id": 7,
+    "description": "Async function with try/catch",
+    "before": "async function load(id) {\n  try {\n    const res = await fetch(`/api/${id}`);\n    return await res.json();\n  } catch (e) {\n    return { error: \"failed\" };\n  }\n}\n",
+    "after": "async function Function1(Alpha) {\n  try {\n    const Bravo = await fetch(`Lorem Ipsum${Alpha}`);\n    return await Bravo.json();\n  } catch (Charlie) {\n    return { error: \"Lorem Ipsum\" };\n  }\n}\n"
+  },
+  {
+    "id": 8,
+    "description": "Array chaining",
+    "before": "function sum(nums) {\n  return nums.filter(n => n > 0).reduce((a, b) => a + b, 0);\n}\n",
+    "after": "function Function1(Alpha) {\n  return Alpha.filter(Bravo => Bravo > 0).reduce((Charlie, Delta) => Charlie + Delta, 0);\n}\n"
+  },
+  {
+    "id": 9,
+    "description": "Switch statement",
+    "before": "function status(code) {\n  switch (code) {\n    case 200: return \"OK\";\n    default: return \"ERR\";\n  }\n}\n",
+    "after": "function Function1(Alpha) {\n  switch (Alpha) {\n    case 200: return \"Lorem Ipsum\";\n    default: return \"Lorem Ipsum\";\n  }\n}\n"
+  },
+  {
+    "id": 10,
+    "description": "IIFE with closure",
+    "before": "const counter = (() => {\n  let i = 0;\n  return () => ++i;\n})();\n",
+    "after": "const Alpha = (() => {\n  let Bravo = 0;\n  return () => ++Bravo;\n})();\n"
+  },
+  {
+    "id": 11,
+    "description": "Generator function",
+    "before": "function* gen(n) {\n  for (let i = 0; i < n; i++) yield i;\n}\n",
+    "after": "function* Function1(Alpha) {\n  for (let Bravo = 0; Bravo < Alpha; Bravo++) yield Bravo;\n}\n"
+  },
+  {
+    "id": 12,
+    "description": "Optional chaining",
+    "before": "function read(o) {\n  return o?.a?.b ?? \"none\";\n}\n",
+    "after": "function Function1(Alpha) {\n  return Alpha?.a?.b ?? \"Lorem Ipsum\";\n}\n"
+  },
+  {
+    "id": 13,
+    "description": "Map and Set",
+    "before": "function uniq(arr) {\n  return [...new Set(arr)];\n}\n",
+    "after": "function Function1(Alpha) {\n  return [...new Set(Alpha)];\n}\n"
+  },
+  {
+    "id": 14,
+    "description": "Regex replace",
+    "before": "function clean(s) {\n  return s.replace(/\\s+/g, \" \");\n}\n",
+    "after": "function Function1(Alpha) {\n  return Alpha.replace(/\\s+/g, \"Lorem Ipsum\");\n}\n"
+  },
+  {
+    "id": 15,
+    "description": "Recursive function",
+    "before": "function walk(n) {\n  if (!n) return \"end\";\n  return walk(n.next);\n}\n",
+    "after": "function Function1(Alpha) {\n  if (!Alpha) return \"Lorem Ipsum\";\n  return Function1(Alpha.next);\n}\n"
+  },
+  {
+    "id": 16,
+    "description": "Promise.all",
+    "before": "async function load(ids) {\n  const res = await Promise.all(ids.map(i => fetch(`/x/${i}`)));\n  return res.length;\n}\n",
+    "after": "async function Function1(Alpha) {\n  const Bravo = await Promise.all(Alpha.map(Charlie => fetch(`Lorem Ipsum${Charlie}`)));\n  return Bravo.length;\n}\n"
+  },
+  {
+    "id": 17,
+    "description": "React component",
+    "before": "function Hello({ name }) {\n  return <h1>Hello {name}</h1>;\n}\n",
+    "after": "function Function1({ name: Alpha }) {\n  return <h1>Lorem Ipsum {Alpha}</h1>;\n}\n"
+  },
+  {
+    "id": 18,
+    "description": "Rest parameters",
+    "before": "function join(...p) {\n  return p.join(\"-\");\n}\n",
+    "after": "function Function1(...Alpha) {\n  return Alpha.join(\"Lorem Ipsum\");\n}\n"
+  },
+  {
+    "id": 19,
+    "description": "Static class field",
+    "before": "class A { static V = \"1\"; }\n",
+    "after": "class Class1 { static Alpha = \"Lorem Ipsum\"; }\n"
+  },
+  {
+    "id": 20,
+    "description": "Date formatting",
+    "before": "function fmt(d) { return d.toLocaleDateString(\"fr-FR\"); }\n",
+    "after": "function Function1(Alpha) { return Alpha.toLocaleDateString(\"Lorem Ipsum\"); }\n"
+  },
+  {
+    "id": 21,
+    "description": "Event listener",
+    "before": "btn.addEventListener(\"click\", () => alert(\"hi\"));\n",
+    "after": "Alpha.addEventListener(\"Lorem Ipsum\", () => alert(\"Lorem Ipsum\"));\n"
+  },
+  {
+    "id": 22,
+    "description": "JSON stringify/parse",
+    "before": "function clone(o) { return JSON.parse(JSON.stringify(o)); }\n",
+    "after": "function Function1(Alpha) { return JSON.parse(JSON.stringify(Alpha)); }\n"
+  },
+  {
+    "id": 23,
+    "description": "Symbol",
+    "before": "const S = Symbol(\"x\");\n",
+    "after": "const Alpha = Symbol(\"Lorem Ipsum\");\n"
+  },
+  {
+    "id": 24,
+    "description": "URLSearchParams",
+    "before": "new URLSearchParams(\"a=1\").get(\"a\");\n",
+    "after": "new URLSearchParams(\"Lorem Ipsum\").get(\"Lorem Ipsum\");\n"
+  },
+  {
+    "id": 25,
+    "description": "While loop",
+    "before": "while (x !== \"STOP\") x++;\n",
+    "after": "while (Alpha !== \"Lorem Ipsum\") Alpha++;\n"
+  },
+  {
+    "id": 26,
+    "description": "Destructuring rest",
+    "before": "const { a, ...b } = obj;\n",
+    "after": "const { a: Alpha, ...Bravo } = Charlie;\n"
+  },
+  {
+    "id": 27,
+    "description": "Tagged template",
+    "before": "tag`hi ${x}`;\n",
+    "after": "Function1`Lorem Ipsum ${Alpha}`;\n"
+  },
+  {
+    "id": 28,
+    "description": "BigInt",
+    "before": "1_000n + BigInt(x);\n",
+    "after": "1_000n + BigInt(Alpha);\n"
+  },
+  {
+    "id": 29,
+    "description": "Throw error",
+    "before": "throw new Error(\"bad\");\n",
+    "after": "throw new Error(\"Lorem Ipsum\");\n"
+  },
+  {
+    "id": 30,
+    "description": "Proxy",
+    "before": "new Proxy(o, { get: () => \"x\" });\n",
+    "after": "new Proxy(Alpha, { get: () => \"Lorem Ipsum\" });\n"
+  },
+  {
+    "id": 31,
+    "description": "Computed object keys",
+    "before": "({ [\"a-b\"]: 1 })\n",
+    "after": "({ [\"Lorem Ipsum\"]: 1 })\n"
+  },
+  {
+    "id": 32,
+    "description": "Complex object keys with string literals + access",
+    "before": "function build() {\n  const obj = { \"a-b\": 1, \"c-d\": 2 };\n  return obj[\"a-b\"] + obj[\"c-d\"];\n}\n",
+    "after": "function Function1() {\n  const Alpha = { \"Lorem Ipsum\": 1, \"Lorem Ipsum\": 2 };\n  return Alpha[\"Lorem Ipsum\"] + Alpha[\"Lorem Ipsum\"];\n}\n"
+  }
+]
