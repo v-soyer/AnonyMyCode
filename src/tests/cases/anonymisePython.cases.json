@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1,
+    "description": "Simple variable assignment + print",
+    "before": "message = \"Hello\"\nprint(message)\n",
+    "after": "Alpha = \"Lorem Ipsum\"\nprint(Alpha)\n"
+  },
+  {
+    "id": 2,
+    "description": "Two variables and a concatenated print",
+    "before": "first = \"Hello\"\nsecond = \"World\"\nprint(first + \" \" + second)\n",
+    "after": "Alpha = \"Lorem Ipsum\"\nBravo = \"Dolor sit amet\"\nprint(Alpha + \"Consectetur adipiscing elit\" + Bravo)\n"
+  },
+  {
+    "id": 3,
+    "description": "Inline comment removed",
+    "before": "x = 10  # this is a number\nprint(x)\n",
+    "after": "Alpha = 10\nprint(Alpha)\n"
+  },
+  {
+    "id": 4,
+    "description": "Function with one parameter",
+    "before": "def greet(name):\n    print(\"Hello\", name)\n\ngreet(\"Alice\")\n",
+    "after": "def Function1(Alpha):\n    print(\"Lorem Ipsum\", Alpha)\n\nFunction1(\"Dolor sit amet\")\n"
+  },
+  {
+    "id": 5,
+    "description": "Function returns a value",
+    "before": "def add(a, b):\n    return a + b\n\nresult = add(2, 3)\nprint(result)\n",
+    "after": "def Function1(Alpha, Bravo):\n    return Alpha + Bravo\n\nCharlie = Function1(2, 3)\nprint(Charlie)\n"
+  },
+  {
+    "id": 6,
+    "description": "Reused variable name mapping in same snippet",
+    "before": "count = 1\ncount = count + 1\nprint(count)\n",
+    "after": "Alpha = 1\nAlpha = Alpha + 1\nprint(Alpha)\n"
+  },
+  {
+    "id": 7,
+    "description": "f-string with expression preserved",
+    "before": "name = \"Alice\"\nmsg = f\"Hello, {name}!\"\nprint(msg)\n",
+    "after": "Alpha = \"Lorem Ipsum\"\nBravo = f\"Dolor {Alpha} sit amet\"\nprint(Bravo)\n"
+  },
+  {
+    "id": 8,
+    "description": "Two functions calling each other",
+    "before": "def square(n):\n    return n * n\n\ndef show(n):\n    print(\"Value:\", square(n))\n\nshow(4)\n",
+    "after": "def Function1(Alpha):\n    return Alpha * Alpha\n\ndef Function2(Bravo):\n    print(\"Lorem Ipsum\", Function1(Bravo))\n\nFunction2(4)\n"
+  },
+  {
+    "id": 9,
+    "description": "Default parameter value (string anonymised)",
+    "before": "def greet(name=\"Guest\"):\n    print(\"Hi\", name)\n\ngreet()\n",
+    "after": "def Function1(Alpha=\"Lorem Ipsum\"):\n    print(\"Dolor sit amet\", Alpha)\n\nFunction1()\n"
+  },
+  {
+    "id": 10,
+    "description": "List creation and loop",
+    "before": "items = [\"a\", \"b\", \"c\"]\nfor item in items:\n    print(item)\n",
+    "after": "Alpha = [\"Lorem Ipsum\", \"Dolor sit amet\", \"Consectetur adipiscing elit\"]\nfor Bravo in Alpha:\n    print(Bravo)\n"
+  },
+  {
+    "id": 11,
+    "description": "If/else with string outputs",
+    "before": "age = 20\nif age >= 18:\n    print(\"adult\")\nelse:\n    print(\"minor\")\n",
+    "after": "Alpha = 20\nif Alpha >= 18:\n    print(\"Lorem Ipsum\")\nelse:\n    print(\"Dolor sit amet\")\n"
+  },
+  {
+    "id": 12,
+    "description": "While loop",
+    "before": "i = 0\nwhile i < 3:\n    print(\"tick\")\n    i += 1\n",
+    "after": "Alpha = 0\nwhile Alpha < 3:\n    print(\"Lorem Ipsum\")\n    Alpha += 1\n"
+  },
+  {
+    "id": 13,
+    "description": "Dictionary usage",
+    "before": "user = {\"name\": \"Alice\", \"role\": \"admin\"}\nprint(user[\"name\"])\n",
+    "after": "Alpha = {\"Lorem Ipsum\": \"Dolor sit amet\", \"Consectetur adipiscing elit\": \"Sed do eiusmod\"}\nprint(Alpha[\"Lorem Ipsum\"])\n"
+  },
+  {
+    "id": 14,
+    "description": "Try/except with exception variable",
+    "before": "try:\n    value = int(\"42\")\nexcept ValueError as err:\n    print(\"bad\", err)\n",
+    "after": "try:\n    Alpha = int(\"Lorem Ipsum\")\nexcept ValueError as Bravo:\n    print(\"Dolor sit amet\", Bravo)\n"
+  },
+  {
+    "id": 15,
+    "description": "Function with *args and **kwargs",
+    "before": "def log(*args, **kwargs):\n    print(\"args\", args)\n    print(\"kwargs\", kwargs)\n\nlog(1, 2, mode=\"fast\")\n",
+    "after": "def Function1(*Alpha, **Bravo):\n    print(\"Lorem Ipsum\", Alpha)\n    print(\"Dolor sit amet\", Bravo)\n\nFunction1(1, 2, mode=\"Consectetur adipiscing elit\")\n"
+  },
+  {
+    "id": 16,
+    "description": "Lambda assigned to a variable",
+    "before": "inc = lambda x: x + 1\nprint(inc(5))\n",
+    "after": "Alpha = lambda Bravo: Bravo + 1\nprint(Alpha(5))\n"
+  },
+  {
+    "id": 17,
+    "description": "List comprehension",
+    "before": "nums = [1, 2, 3]\nsquares = [n*n for n in nums]\nprint(squares)\n",
+    "after": "Alpha = [1, 2, 3]\nBravo = [Charlie*Charlie for Charlie in Alpha]\nprint(Bravo)\n"
+  },
+  {
+    "id": 18,
+    "description": "Generator expression with sum",
+    "before": "nums = [1, 2, 3]\ntotal = sum(n for n in nums)\nprint(total)\n",
+    "after": "Alpha = [1, 2, 3]\nBravo = sum(Charlie for Charlie in Alpha)\nprint(Bravo)\n"
+  },
+  {
+    "id": 19,
+    "description": "Nested function (closure)",
+    "before": "def outer(x):\n    def inner(y):\n        return x + y\n    return inner(5)\n\nprint(outer(10))\n",
+    "after": "def Function1(Alpha):\n    def Function2(Bravo):\n        return Alpha + Bravo\n    return Function2(5)\n\nprint(Function1(10))\n"
+  },
+  {
+    "id": 20,
+    "description": "Class with method and attribute",
+    "before": "class Greeter:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        print(\"Hello\", self.name)\n\ng = Greeter(\"Alice\")\ng.greet()\n",
+    "after": "class Class1:\n    def __init__(self, Alpha):\n        self.Bravo = Alpha\n\n    def Function1(self):\n        print(\"Lorem Ipsum\", self.Bravo)\n\nCharlie = Class1(\"Dolor sit amet\")\nCharlie.Function1()\n"
+  },
+  {
+    "id": 21,
+    "description": "Inheritance + super()",
+    "before": "class Animal:\n    def speak(self):\n        print(\"...\")\n\nclass Dog(Animal):\n    def speak(self):\n        super().speak()\n        print(\"woof\")\n\nd = Dog()\nd.speak()\n",
+    "after": "class Class1:\n    def Function1(self):\n        print(\"Lorem Ipsum\")\n\nclass Class2(Class1):\n    def Function1(self):\n        super().Function1()\n        print(\"Dolor sit amet\")\n\nAlpha = Class2()\nAlpha.Function1()\n"
+  },
+  {
+    "id": 22,
+    "description": "Property + internal attribute",
+    "before": "class User:\n    def __init__(self, name):\n        self._name = name\n\n    @property\n    def name(self):\n        return self._name\n\nu = User(\"Alice\")\nprint(u.name)\n",
+    "after": "class Class1:\n    def __init__(self, Alpha):\n        self._Bravo = Alpha\n\n    @property\n    def Charlie(self):\n        return self._Bravo\n\nDelta = Class1(\"Lorem Ipsum\")\nprint(Delta.Charlie)\n"
+  },
+  {
+    "id": 23,
+    "description": "Decorator usage (user-defined decorator + wrapped function)",
+    "before": "def trace(fn):\n    def wrapper(*args, **kwargs):\n        print(\"call\")\n        return fn(*args, **kwargs)\n    return wrapper\n\n@trace\ndef hello(name):\n    print(\"hi\", name)\n\nhello(\"Alice\")\n",
+    "after": "def Function1(Alpha):\n    def Function2(*Bravo, **Charlie):\n        print(\"Lorem Ipsum\")\n        return Alpha(*Bravo, **Charlie)\n    return Function2\n\n@Function1\ndef Function3(Delta):\n    print(\"Dolor sit amet\", Delta)\n\nFunction3(\"Consectetur adipiscing elit\")\n"
+  },
+  {
+    "id": 24,
+    "description": "Multiple assignment + tuple unpacking",
+    "before": "a, b = 1, 2\nb, a = a, b\nprint(a, b)\n",
+    "after": "Alpha, Bravo = 1, 2\nBravo, Alpha = Alpha, Bravo\nprint(Alpha, Bravo)\n"
+  },
+  {
+    "id": 25,
+    "description": "File read using context manager (variables anonymised, strings anonymised)",
+    "before": "path = \"data.txt\"\nwith open(path, \"r\") as f:\n    content = f.read()\nprint(content)\n",
+    "after": "Alpha = \"Lorem Ipsum\"\nwith open(Alpha, \"Dolor sit amet\") as Bravo:\n    Charlie = Bravo.read()\nprint(Charlie)\n"
+  },
+  {
+    "id": 26,
+    "description": "Simple module-style constants (variables anonymised, string anonymised)",
+    "before": "API_URL = \"https://example.com\"\nTIMEOUT = 5\nprint(API_URL, TIMEOUT)\n",
+    "after": "Alpha = \"Lorem Ipsum\"\nBravo = 5\nprint(Alpha, Bravo)\n"
+  },
+  {
+    "id": 27,
+    "description": "Dataclass-like pattern without importing dataclasses",
+    "before": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\np = Point(1, 2)\nprint(p.x, p.y)\n",
+    "after": "class Class1:\n    def __init__(self, Alpha, Bravo):\n        self.Charlie = Alpha\n        self.Delta = Bravo\n\nEcho = Class1(1, 2)\nprint(Echo.Charlie, Echo.Delta)\n"
+  },
+  {
+    "id": 28,
+    "description": "Docstring removal (treated as comment) + regular comment removal",
+    "before": "\"\"\"Module docstring\"\"\"\n\ndef compute(x):\n    \"\"\"Compute something\"\"\"\n    # double it\n    return x * 2\n\nprint(compute(3))\n",
+    "after": "def Function1(Alpha):\n    return Alpha * 2\n\nprint(Function1(3))\n"
+  },
+  {
+    "id": 29,
+    "description": "Match/case (Python 3.10+) with string outputs",
+    "before": "value = \"start\"\nmatch value:\n    case \"start\":\n        print(\"go\")\n    case _:\n        print(\"stop\")\n",
+    "after": "Alpha = \"Lorem Ipsum\"\nmatch Alpha:\n    case \"Dolor sit amet\":\n        print(\"Consectetur adipiscing elit\")\n    case _:\n        print(\"Sed do eiusmod\")\n"
+  },
+  {
+    "id": 30,
+    "description": "Async function + await (simple)",
+    "before": "import asyncio\n\nasync def main():\n    msg = \"running\"\n    print(msg)\n\nasyncio.run(main())\n",
+    "after": "import asyncio\n\nasync def Function1():\n    Alpha = \"Lorem Ipsum\"\n    print(Alpha)\n\nasyncio.run(Function1())\n"
+  },
+  {
+    "id": 31,
+    "description": "Class composition + method calls + multiple strings",
+    "before": "class Logger:\n    def info(self, text):\n        print(\"INFO:\", text)\n\nclass Service:\n    def __init__(self, logger):\n        self.logger = logger\n\n    def run(self):\n        self.logger.info(\"Service started\")\n        self.logger.info(\"Service finished\")\n\nsvc = Service(Logger())\nsvc.run()\n",
+    "after": "class Class1:\n    def Function1(self, Alpha):\n        print(\"Lorem Ipsum\", Alpha)\n\nclass Class2:\n    def __init__(self, Bravo):\n        self.Charlie = Bravo\n\n    def Function2(self):\n        self.Charlie.Function1(\"Dolor sit amet\")\n        self.Charlie.Function1(\"Consectetur adipiscing elit\")\n\nDelta = Class2(Class1())\nDelta.Function2()\n"
+  },
+  {
+    "id": 32,
+    "description": "More complex f-string with multiple expressions",
+    "before": "first = \"Ada\"\nlast = \"Lovelace\"\nfull = f\"{first} {last}\"\nprint(f\"User: {full}\")\n",
+    "after": "Alpha = \"Lorem Ipsum\"\nBravo = \"Dolor sit amet\"\nCharlie = f\"{Alpha} {Bravo}\"\nprint(f\"Consectetur adipiscing elit {Charlie}\")\n"
+  }
+]

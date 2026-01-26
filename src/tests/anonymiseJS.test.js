@@ -1,4 +1,4 @@
-import { describe, it, test, expect } from "vitest";
+import { describe, test, expect } from "vitest";
 import cases from "./cases/anonymiseJS.cases.json";
 import { anonymiseJS } from "../processors/anonymiseJS";
 
