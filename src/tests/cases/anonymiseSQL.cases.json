@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "description": "Simple SELECT with one table and one column",
+    "before": "SELECT id FROM users;",
+    "after": "SELECT A FROM Alpha;"
+  },
+  {
+    "id": 2,
+    "description": "SELECT with two columns and a WHERE filter",
+    "before": "SELECT id, name FROM users WHERE active = 1;",
+    "after": "SELECT A, B FROM Alpha WHERE C = 1;"
+  },
+  {
+    "id": 3,
+    "description": "Hard-coded string replaced",
+    "before": "SELECT name FROM users WHERE name = 'John';",
+    "after": "SELECT A FROM Alpha WHERE A = 'lorem ipsum';"
+  },
+  {
+    "id": 4,
+    "description": "Line comment removed",
+    "before": "SELECT id FROM users; -- fetch ids",
+    "after": "SELECT A FROM Alpha;"
+  },
+  {
+    "id": 5,
+    "description": "Block comment removed",
+    "before": "/* report */ SELECT id FROM users;",
+    "after": "SELECT A FROM Alpha;"
+  },
+  {
+    "id": 6,
+    "description": "Table alias anonymised",
+    "before": "SELECT u.id FROM users u;",
+    "after": "SELECT t1.A FROM Alpha t1;"
+  },
+  {
+    "id": 7,
+    "description": "Two tables with JOIN and ON clause",
+    "before": "SELECT u.id, o.total FROM users u JOIN orders o ON o.user_id = u.id;",
+    "after": "SELECT t1.A, t2.B FROM Alpha t1 JOIN Bravo t2 ON t2.C = t1.A;"
+  },
+  {
+    "id": 8,
+    "description": "JOIN + WHERE with hard-coded string",
+    "before": "SELECT u.email FROM users u JOIN profiles p ON p.user_id = u.id WHERE p.city = 'Paris';",
+    "after": "SELECT t1.A FROM Alpha t1 JOIN Bravo t2 ON t2.B = t1.C WHERE t2.D = 'lorem ipsum';"
+  },
+  {
+    "id": 9,
+    "description": "ORDER BY anonymised",
+    "before": "SELECT id, created_at FROM users ORDER BY created_at DESC;",
+    "after": "SELECT A, B FROM Alpha ORDER BY B DESC;"
+  },
+  {
+    "id": 10,
+    "description": "GROUP BY + HAVING anonymised",
+    "before": "SELECT country, COUNT(*) AS cnt FROM users GROUP BY country HAVING COUNT(*) > 10;",
+    "after": "SELECT A, COUNT(*) AS c1 FROM Alpha GROUP BY A HAVING COUNT(*) > 10;"
+  },
+  {
+    "id": 11,
+    "description": "Column alias anonymised",
+    "before": "SELECT total AS revenue FROM orders;",
+    "after": "SELECT A AS c1 FROM Alpha;"
+  },
+  {
+    "id": 12,
+    "description": "DISTINCT with two columns",
+    "before": "SELECT DISTINCT user_id, status FROM orders;",
+    "after": "SELECT DISTINCT A, B FROM Alpha;"
+  },
+  {
+    "id": 13,
+    "description": "IN list with hard-coded strings",
+    "before": "SELECT id FROM users WHERE role IN ('admin','staff');",
+    "after": "SELECT A FROM Alpha WHERE B IN ('lorem ipsum','lorem ipsum');"
+  },
+  {
+    "id": 14,
+    "description": "LIKE pattern keeps wildcards",
+    "before": "SELECT email FROM users WHERE email LIKE '%@example.com';",
+    "after": "SELECT A FROM Alpha WHERE A LIKE '%lorem ipsum';"
+  },
+  {
+    "id": 15,
+    "description": "ILIKE pattern keeps wildcards",
+    "before": "SELECT name FROM users WHERE name ILIKE 'jo%';",
+    "after": "SELECT A FROM Alpha WHERE A ILIKE 'lorem%';"
+  },
+  {
+    "id": 16,
+    "description": "Parameter placeholders preserved (?)",
+    "before": "SELECT id FROM users WHERE email = ?;",
+    "after": "SELECT A FROM Alpha WHERE B = ?;"
+  },
+  {
+    "id": 17,
+    "description": "Parameter placeholders preserved (:name)",
+    "before": "SELECT id FROM users WHERE email = :email;",
+    "after": "SELECT A FROM Alpha WHERE B = :email;"
+  },
+  {
+    "id": 18,
+    "description": "Parameter placeholders preserved ($1)",
+    "before": "SELECT id FROM users WHERE email = $1;",
+    "after": "SELECT A FROM Alpha WHERE B = $1;"
+  },
+  {
+    "id": 19,
+    "description": "Quoted identifiers preserved (double quotes)",
+    "before": "SELECT \"User\".\"id\" FROM \"User\";",
+    "after": "SELECT \"Alpha\".\"A\" FROM \"Alpha\";"
+  },
+  {
+    "id": 20,
+    "description": "Quoted identifiers preserved (backticks)",
+    "before": "SELECT `user`.`id` FROM `user`;",
+    "after": "SELECT `Alpha`.`A` FROM `Alpha`;"
+  },
+  {
+    "id": 21,
+    "description": "Quoted identifiers preserved (brackets)",
+    "before": "SELECT [user].[id] FROM [user];",
+    "after": "SELECT [Alpha].[A] FROM [Alpha];"
+  },
+  {
+    "id": 22,
+    "description": "Schema-qualified table anonymised",
+    "before": "SELECT id FROM public.users;",
+    "after": "SELECT A FROM Alpha.Bravo;"
+  },
+  {
+    "id": 23,
+    "description": "Database + schema-qualified table anonymised",
+    "before": "SELECT id FROM appdb.public.users;",
+    "after": "SELECT A FROM Alpha.Bravo.Charlie;"
+  },
+  {
+    "id": 24,
+    "description": "table.* preserved with anonymised table name/alias",
+    "before": "SELECT u.* FROM users u;",
+    "after": "SELECT t1.* FROM Alpha t1;"
+  },
+  {
+    "id": 25,
+    "description": "Derived table (subquery in FROM) with scoped aliases",
+    "before": "SELECT x.user_id FROM (SELECT user_id FROM orders WHERE status = 'PAID') x;",
+    "after": "SELECT t1.A FROM (SELECT A FROM Alpha WHERE B = 'lorem ipsum') t1;"
+  },
+  {
+    "id": 26,
+    "description": "Nested subquery in WHERE EXISTS",
+    "before": "SELECT u.id FROM users u WHERE EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.id);",
+    "after": "SELECT t1.A FROM Alpha t1 WHERE EXISTS (SELECT 1 FROM Bravo t2 WHERE t2.B = t1.A);"
+  },
+  {
+    "id": 27,
+    "description": "UNION ALL with two SELECTs",
+    "before": "SELECT email FROM users UNION ALL SELECT email FROM leads;",
+    "after": "SELECT A FROM Alpha UNION ALL SELECT A FROM Bravo;"
+  },
+  {
+    "id": 28,
+    "description": "CTE name anonymised and used in main query",
+    "before": "WITH recent_orders AS (SELECT id, user_id FROM orders) SELECT user_id FROM recent_orders;",
+    "after": "WITH Alpha AS (SELECT A, B FROM Bravo) SELECT B FROM Alpha;"
+  },
+  {
+    "id": 29,
+    "description": "Multiple CTEs with join between them",
+    "before": "WITH u AS (SELECT id FROM users), o AS (SELECT user_id, total FROM orders) SELECT u.id, o.total FROM u JOIN o ON o.user_id = u.id;",
+    "after": "WITH Alpha AS (SELECT A FROM Bravo), Charlie AS (SELECT A, B FROM Delta) SELECT t1.A, t2.B FROM Alpha t1 JOIN Charlie t2 ON t2.A = t1.A;"
+  },
+  {
+    "id": 30,
+    "description": "Window function OVER(PARTITION BY/ORDER BY) anonymised",
+    "before": "SELECT user_id, total, ROW_NUMBER() OVER (PARTITION BY user_id ORDER BY created_at) AS rn FROM orders;",
+    "after": "SELECT A, B, ROW_NUMBER() OVER (PARTITION BY A ORDER BY C) AS c1 FROM Alpha;"
+  },
+  {
+    "id": 31,
+    "description": "CASE expression with hard-coded strings replaced",
+    "before": "SELECT CASE WHEN status = 'PAID' THEN 'OK' ELSE 'KO' END AS label FROM orders;",
+    "after": "SELECT CASE WHEN A = 'lorem ipsum' THEN 'lorem ipsum' ELSE 'lorem ipsum' END AS c1 FROM Alpha;"
+  },
+  {
+    "id": 32,
+    "description": "JOIN ... USING(...) anonymised",
+    "before": "SELECT * FROM orders JOIN refunds USING (order_id);",
+    "after": "SELECT * FROM Alpha JOIN Bravo USING (A);"
+  },
+  {
+    "id": 33,
+    "description": "INSERT with column list and hard-coded string",
+    "before": "INSERT INTO users (email, name) VALUES ('a@b.com', 'Alice');",
+    "after": "INSERT INTO Alpha (A, B) VALUES ('lorem ipsum', 'lorem ipsum');"
+  },
+  {
+    "id": 34,
+    "description": "UPDATE with SET and WHERE including placeholders",
+    "before": "UPDATE users SET name = :name WHERE id = $1;",
+    "after": "UPDATE Alpha SET A = :name WHERE B = $1;"
+  },
+  {
+    "id": 35,
+    "description": "DELETE with WHERE and hard-coded string",
+    "before": "DELETE FROM sessions WHERE status = 'EXPIRED';",
+    "after": "DELETE FROM Alpha WHERE A = 'lorem ipsum';"
+  },
+  {
+    "id": 36,
+    "description": "RETURNING clause anonymised",
+    "before": "INSERT INTO orders (user_id, total) VALUES (1, 42) RETURNING id;",
+    "after": "INSERT INTO Alpha (A, B) VALUES (1, 42) RETURNING C;"
+  },
+  {
+    "id": 37,
+    "description": "CREATE TABLE anonymised (table + columns)",
+    "before": "CREATE TABLE users (id INT, email VARCHAR(255));",
+    "after": "CREATE TABLE Alpha (A INT, B VARCHAR(255));"
+  },
+  {
+    "id": 38,
+    "description": "ALTER TABLE anonymised (table + column)",
+    "before": "ALTER TABLE users ADD COLUMN last_login TIMESTAMP;",
+    "after": "ALTER TABLE Alpha ADD COLUMN A TIMESTAMP;"
+  },
+  {
+    "id": 39,
+    "description": "Complex multi-join, filters, comments, aliases, strings",
+    "before": "/* dashboard */\nSELECT u.id AS user_id, o.total AS total_amt\nFROM users u\nLEFT JOIN orders o ON o.user_id = u.id\nLEFT JOIN payments p ON p.order_id = o.id\nWHERE p.provider = 'stripe' AND o.status IN ('PAID','REFUNDED')\nORDER BY o.created_at DESC; -- end",
+    "after": "SELECT t1.A AS c1, t2.B AS c2 FROM Alpha t1 LEFT JOIN Bravo t2 ON t2.C = t1.A LEFT JOIN Charlie t3 ON t3.D = t2.E WHERE t3.F = 'lorem ipsum' AND t2.G IN ('lorem ipsum','lorem ipsum') ORDER BY t2.H DESC;"
+  },
+  {
+    "id": 40,
+    "description": "Very complex: CTE + nested EXISTS + window + LIKE + placeholders",
+    "before": "WITH active_users AS (\n  SELECT u.id, u.email\n  FROM users u\n  WHERE u.status = 'ACTIVE' AND u.email LIKE '%@example.com'\n)\nSELECT au.id,\n       ROW_NUMBER() OVER (PARTITION BY au.id ORDER BY o.created_at) AS rn\nFROM active_users au\nJOIN orders o ON o.user_id = au.id\nWHERE EXISTS (\n  SELECT 1\n  FROM order_items oi\n  WHERE oi.order_id = o.id AND oi.sku = :sku\n);",
+    "after": "WITH Alpha AS (SELECT t1.A, t1.B FROM Bravo t1 WHERE t1.C = 'lorem ipsum' AND t1.B LIKE '%lorem ipsum') SELECT t2.A, ROW_NUMBER() OVER (PARTITION BY t2.A ORDER BY t3.D) AS c1 FROM Alpha t2 JOIN Charlie t3 ON t3.E = t2.A WHERE EXISTS (SELECT 1 FROM Delta t4 WHERE t4.F = t3.G AND t4.H = :sku);"
+  }
+]
