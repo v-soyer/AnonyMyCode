@@ -7,7 +7,7 @@ import { anonymiseJS } from '../processors/anonymiseJS';
 const CHAR_LIMIT = 3000;
 
 export default function JavaScriptPage() {
-const [inputCode, setInputCode] = useState(`function greet(name) {
+  const [inputCode, setInputCode] = useState(`function greet(name) {
   const message = \`Hello, \${name}!\`;
   console.log(message);
 }
@@ -29,7 +29,13 @@ greet('Alice');`);
 
   return (
     <div className="page">
-      <h2>JavaScript Code Anonymiser</h2>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
+        <h2>JavaScript Anonymiser</h2>
+        <span className="language-badge javascript">JS</span>
+      </div>
+      <p className="page-description">
+        Paste your JavaScript code below to anonymise variable names, function names, and identifiers.
+      </p>
 
       <HighlightedEditor
         label="Original Code"
@@ -41,16 +47,24 @@ greet('Alice');`);
         isInvalid={inputCode.length > CHAR_LIMIT}
       />
 
-      <ActionButton onClick={handleAnonymise}>
-        Anonymise
-      </ActionButton>
-      {error && (
-        <p style={{ color: '#f87171', marginTop: '0.5rem' }}>{error}</p>
-      )}
-      <br />
-      <br />
+      <div className="button-group">
+        <ActionButton onClick={handleAnonymise}>
+          Anonymise Code
+        </ActionButton>
+        {error && (
+          <p className="error-message">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            {error}
+          </p>
+        )}
+      </div>
+
       <HighlightedEditor
-        label="Anonymised Code"
+        label="Anonymised Output"
         code={outputCode}
         setCode={() => {}}
         language="javascript"

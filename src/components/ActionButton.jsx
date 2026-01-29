@@ -1,33 +1,24 @@
 import { useState } from 'react';
 
-export default function ActionButton({ onClick, children, message = 'Anonymised !' }) {
+export default function ActionButton({ onClick, children, message = 'Anonymised!' }) {
   const [status, setStatus] = useState(false);
 
   const handleClick = () => {
     onClick();
     setStatus(true);
-    setTimeout(() => setStatus(false), 500);
+    setTimeout(() => setStatus(false), 1500);
   };
 
   return (
     <div style={{ position: 'relative', display: 'inline-block' }}>
       <button className="anonymise-button" onClick={handleClick}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
         {children}
       </button>
       {status && (
-        <div style={{
-          position: 'absolute',
-          top: '-1.8rem',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          backgroundColor: '#374151',
-          color: '#fff',
-          padding: '4px 8px',
-          fontSize: '0.75rem',
-          borderRadius: '4px',
-          whiteSpace: 'nowrap',
-          pointerEvents: 'none'
-        }}>
+        <div className="tooltip">
           {message}
         </div>
       )}
