@@ -21,39 +21,34 @@ export default function HighlightedEditor({
     sql: languages.sql,
   };
 
-  const borderStyle = isInvalid
-    ? '2px solid #f87171' // red
-    : '1px solid #333';
+  const wrapperClasses = `editor-wrapper${isInvalid ? ' invalid' : ''}`;
 
   return (
-    <div style={{ marginBottom: '1.5rem', position: 'relative' }}>
-      {label && <h3 style={{ marginBottom: '0.5rem', color: '#ccc' }}>{label}</h3>}
-      <Editor
-        value={code}
-        onValueChange={readOnly ? () => {} : setCode}
-        highlight={code => highlight(code, grammar[language])}
-        padding={12}
-        style={{
-          backgroundColor: '#1e1e1e',
-          color: '#f8f8f2',
-          borderRadius: '6px',
-          fontSize: 14,
-          minHeight: '200px',
-          border: borderStyle,
-          fontFamily: '"Roboto Mono", monospace'
-        }}
-      />
-      {showCounter && (
-        <div style={{
-          position: 'absolute',
-          bottom: '6px',
-          right: '12px',
-          fontSize: '0.7rem',
-          color: code.length > (charLimit ?? Infinity) ? '#f87171' : '#9ca3af'
-        }}>
-          {code.length}/{charLimit}
-        </div>
-      )}
+    <div className="editor-section">
+      {label && <h3>{label}</h3>}
+      <div className={wrapperClasses}>
+        <Editor
+          value={code}
+          onValueChange={readOnly ? () => {} : setCode}
+          highlight={code => highlight(code, grammar[language])}
+          padding={16}
+          className="prism-editor"
+          style={{
+            backgroundColor: 'transparent',
+            color: '#e4e4e7',
+            fontSize: 14,
+            minHeight: '220px',
+            fontFamily: '"JetBrains Mono", "Roboto Mono", monospace',
+            lineHeight: 1.7,
+          }}
+          textareaClassName="editor-textarea"
+        />
+        {showCounter && charLimit && (
+          <div className={`char-counter${code.length > charLimit ? ' invalid' : ''}`}>
+            {code.length} / {charLimit}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
